@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // In-memory data store
 let posts = [
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //CHALLENGE 1: GET All posts
 app.get("/posts", (req, res) => {
   console.log(posts);
-  res.json(posts);
+  res.render(posts);
 });
 //CHALLENGE 2: GET a specific post by id
 app.get("/posts/:id", (req, res) => {
